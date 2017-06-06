@@ -92,9 +92,11 @@ def should_copy_file(remote_storage, path, prefixed_path, source_storage):
     if has_matching_etag(
             remote_storage, source_storage, path, prefixed_path):
         logger.info("%s: Skipping based on matching file hashes" % path)
+        print("%s: Skipping based on matching file hashes" % path)
         return False
 
     # Invalidate cached versions of lookup before copy
     destroy_etag(path)
     logger.info("%s: Hashes did not match" % path)
+    print("%s: Hashes did not match" % path)
     return True
